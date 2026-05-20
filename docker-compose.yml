@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  gitea:
+    image: gitea/gitea:1.21
+    container_name: gitea
+    restart: always
+    environment:
+      - GITEA__server__DOMAIN=${DOMAIN}
+      - GITEA__server__ROOT_URL=https://${DOMAIN}/
+      - GITEA__server__SSH_PORT=2222
+      - GITEA__server__SSH_LISTEN_PORT=2222
+      - GITEA__service__DISABLE_REGISTRATION=true
+    volumes:
+      - ./data:/data
+    ports:
+      - "127.0.0.1:3000:3000"
+      - "2222:2222"
