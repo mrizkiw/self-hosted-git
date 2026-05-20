@@ -1,0 +1,5 @@
+# Cron job untuk automated backup
+# Install dengan: sudo cp cron/gitea-backup /etc/cron.d/gitea-backup
+
+# Backup setiap hari jam 2 pagi
+0 2 * * * root cd /opt/self-hosted-git && ./scripts/backup.sh >> /var/log/gitea-backup.log 2>&1
