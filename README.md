@@ -1,43 +1,33 @@
-# Self-Hosted Git (Minimal)
+# Self-Hosted Git (Minimal, No Domain)
 
-Git server pribadi. Push, pull, lihat commit history — selesai.
+Git server pribadi. Akses via IP. Push, pull, lihat commit history.
 
-## Setup (1 command)
+## Setup
 
 ```bash
 # Upload folder ini ke VPS, lalu:
-sudo ./setup.sh git.domainmu.com
+sudo ./setup.sh
 ```
 
-Syarat:
-- Domain sudah pointing ke IP VPS (A record)
-- VPS Ubuntu/Debian dengan akses root
+Itu saja. Tidak perlu domain, tidak perlu SSL, tidak perlu Nginx.
 
 ## Setelah Setup
 
-1. Buka `https://git.domainmu.com`
+1. Buka `http://IP_VPS:3000`
 2. Buat admin account (pertama kali)
 3. Buat repository
 4. Push code:
 
 ```bash
-git remote add origin https://git.domainmu.com/username/repo.git
+git remote add origin http://IP_VPS:3000/username/repo.git
 git push -u origin main
 ```
 
 Atau via SSH:
 ```bash
-git remote add origin ssh://git@git.domainmu.com:2222/username/repo.git
+git remote add origin ssh://git@IP_VPS:2222/username/repo.git
 git push -u origin main
 ```
-
-## Fitur
-
-- ✅ git push / pull / clone
-- ✅ Commit history (web UI)
-- ✅ File browser
-- ✅ HTTPS + SSH
-- ✅ Private by default (registration disabled)
 
 ## Maintenance
 
