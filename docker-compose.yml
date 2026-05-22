@@ -15,3 +15,13 @@ services:
     ports:
       - "3000:3000"
       - "2222:2222"
+
+  backup:
+    build: ./backups
+    container_name: gitea-backup
+    restart: always
+    volumes:
+      - ./data:/gitea-data:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=Asia/Bangkok
